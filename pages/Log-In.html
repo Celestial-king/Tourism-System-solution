@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - WanderNest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-10">
+        <a href="/" class="flex items-center gap-2 text-white text-xl font-medium">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            </svg>
+            WanderNest
+        </a>
+        <a href="/signup" class="text-white hover:underline">Sign up</a>
+    </header>
+
+    <div class="min-h-screen grid grid-cols-1 md:grid-cols-2">
+        <!-- Left Section -->
+        <div class="relative hidden md:flex flex-col justify-end p-8 text-white bg-cover bg-center" 
+             style="background-image: url('images/create\ a\ n\ acc.jpeg')">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30"></div>
+            <div class="relative z-10 max-w-xl space-y-4 mb-8">
+                <blockquote class="text-2xl leading-relaxed">
+                    "Every challenge will be a chance to effect our contribution to the growth and tourism and of the Philippine economy. It will also define our love of country and the Filipino people."
+                </blockquote>
+                <cite class="block">
+                    <strong class="block font-semibold">Sec. Bernadette Romulo-Puyat</strong>
+                    Department of Tourism
+                </cite>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="flex items-center justify-center p-8">
+            <div class="w-full max-w-sm space-y-6">
+                <div class="space-y-2">
+                    <h1 class="text-3xl font-bold tracking-tight">Login</h1>
+                </div>
+
+                <form action="/login" method="POST" class="space-y-4">
+                    <div class="space-y-2">
+                        <label for="email" class="block text-sm font-medium">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="name@example.com"
+                            required
+                            class="block w-full rounded-md border border-gray-200 px-4 py-3 text-sm transition-colors placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1"
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="password" class="block text-sm font-medium">
+                            Password
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            class="block w-full rounded-md border border-gray-200 px-4 py-3 text-sm transition-colors placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1"
+                        />
+                    </div>
+
+                    <div class="flex items-center justify-end">
+                        <a href="/forgot-password" class="text-sm text-gray-500 hover:text-gray-900">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full rounded-md bg-gray-900 px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-1"
+                    >
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

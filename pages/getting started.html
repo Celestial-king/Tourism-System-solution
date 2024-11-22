@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderNest - Getting Started</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen">
+    <div class="flex min-h-screen">
+        <!-- Left Section with Form -->
+        <div class="flex-1 flex flex-col p-8 lg:p-16">
+            <div class="flex items-center space-x-2 mb-12">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                </svg>
+                <span class="font-semibold text-xl">WanderNest</span>
+            </div>
+
+            <div class="max-w-md w-full mx-auto">
+                <h1 class="text-3xl font-bold mb-8">Getting started</h1>
+                
+                <form class="space-y-6">
+                    <div class="space-y-2">
+                        <label for="first-name" class="block text-sm font-medium text-gray-700">
+                            First name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="first-name" 
+                            name="first-name" 
+                            class="block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
+                            required 
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="last-name" class="block text-sm font-medium text-gray-700">
+                            Last name
+                        </label>
+                        <input 
+                            type="text" 
+                            id="last-name" 
+                            name="last-name"
+                            class="block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
+                            required 
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="address" class="block text-sm font-medium text-gray-700">
+                            Address
+                        </label>
+                        <input 
+                            type="text" 
+                            id="address" 
+                            name="address"
+                            class="block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
+                            required 
+                        />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="mobile" class="block text-sm font-medium text-gray-700">
+                            Mobile
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="mobile" 
+                            name="mobile"
+                            class="block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
+                            required 
+                        />
+                    </div>
+
+                    <button
+                    class="w-full rounded-md bg-black px-4 py-3 text-sm font-semibold text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                    onclick="window.location.href='verification.html';"
+                >
+                    Next
+                </button><!--change to index-->
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Section with Image -->
+        <div class="hidden lg:flex lg:w-1/2 relative">
+            <img 
+            src="images/verification.jpg"
+                alt="Tropical coastline with mountains" 
+                class="object-cover w-full h-full"
+            />
+            <div class="absolute inset-0 bg-black/20"></div>
+            <div class="absolute top-8 left-8">
+                <div class="flex items-center space-x-2 text-white">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                    </svg>
+                    <span class="font-semibold text-xl">WanderNest</span>
+                </div>
+            </div>
+            <div class="absolute bottom-10 left-10 right-10 text-white space-y-4">
+                <p class="text-lg font-light leading-relaxed">
+                    "Every challenge will be a chance to effect our contribution to the growth and tourism and of the Philippine economy. It will also define our love of country and the Filipino people."
+                </p>
+                <div class="space-y-1">
+                    <p class="font-semibold">Sec. Bernadette Romulo-Puyat</p>
+                    <p class="text-sm text-gray-300">Department of Tourism</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
