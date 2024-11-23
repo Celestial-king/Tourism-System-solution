@@ -11,7 +11,7 @@
         <!-- Left Section with Image -->
         <div class="hidden lg:flex lg:w-1/2 relative bg-gray-900">
             <img 
-                src="images/create a n acc.jpeg"
+                src="../images/create a n acc.jpeg"
                 alt="Historical Filipino street scene" 
                 class="object-cover w-full h-full"
             />
@@ -46,7 +46,7 @@
                         <p class="text-gray-600">Enter your email below to create your account</p>
                     </div>
 
-                    <form class="space-y-6">
+                    <form class="space-y-6" action="/register" method="POST">
                         <div class="space-y-2">
                             <label for="email" class="block text-sm font-medium text-gray-700">
                                 Email
@@ -84,6 +84,32 @@
                                 name="confirm-password"
                                 class="block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
                                 required 
+                            />
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="firstName" class="block text-sm font-medium text-gray-700">
+                                First Name
+                            </label>
+                            <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    class="block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
+                                    required
+                            />
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="lastName" class="block text-sm font-medium text-gray-700">
+                                Last Name
+                            </label>
+                            <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    class="block w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-500 focus:border-orange-500 focus:ring-orange-500"
+                                    required
                             />
                         </div>
 

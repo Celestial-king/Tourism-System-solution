@@ -2,18 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hi</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="flex min-h-screen flex-col">
+<header class="border-b">
+    <div class="container mx-auto flex h-14 items-center gap-4">
+        <a class="font-semibold" href="#">Dashboard</a>
+        <nav class="flex items-center gap-4 text-sm">
+            <a class="text-gray-500 cursor-pointer" onclick="scrollToTrending()" href="index.html" >Trending</a>
+            <a class="text-gray-500" href="#">Hot deals</a>
+            <a class="text-gray-500" href="index.html">Recommended</a>
+            {{ if not (eq .User.FirstName "" )}}
+                <span class="text-green-500">Current Balance: PHP {{printf "%.2f" .User.Balance}}</span>
+            {{end}}
+        </nav>
+        <div class="ml-auto flex items-center gap-4">
+            {{ if (eq .User.FirstName "" )}}
+            <a href="/login" class="px-4 py-2 border rounded-md text-center">Login</a>
+            <a href="account.html" class="px-4 py-2 bg-blue-600 text-white rounded-md text-center">Sign up</a>
+            {{else}}
+            <h3> Hello, {{ .User.FirstName }} <a href="/logout" class="px-4 py-2 bg-blue-600 border text-white rounded-md text-center">Logout </a> </h3>
+            {{ end }}
+        </div>
 
-    <script src="https://web-button.metamap.com/button.js">
-    </script>
-    <metamap-button
-            clientid="67405db1a1651f001c538647"
-            flowId="67405db15db49e001d403829"
-            metadata='{"key": "value"}'
-    />
-
+    </div>
+</header>
+<section class="relative h-[300px] bg-cover bg-center" style="background-image: url('/images/00.jpeg');">
+    <div class="container mx-auto relative z-10 flex h-full flex-col items-center justify-center">
+        <div class="w-full max-w-3xl rounded-lg bg-white p-6 shadow-lg"> <h1 class="mb-4 text-2xl font-bold">What are you looking for today?</h1>
+            <form action="/search" method="GET">
+                <div class="flex gap-4">
+                    <input name="location" value="{{.Location}}" class="flex-1 border rounded-md px-3 py-2" placeholder="e.g. Manila, Philippines">
+                    <input class="border rounded-md px-3 py-2" placeholder="From" type="date">
+                    <input class="border rounded-md px-3 py-2" placeholder="To" type="date">
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-md">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<main class="flex-1 py-8">
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-6">Search Results</h2>
+        {{ $length := len .Items}} {{if not (eq $length 0)}}
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {{range .Items}}
+            <a href="/activities/{{.ID}}" class="block">
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img alt="Beach umbrellas for a relaxing vibe in La Union" class="aspect-[4/3] w-full object-cover" src="{{.ImageUrl}}">
+                    <div class="p-4">
+                        <h3 class="font-medium mb-2">{{.Title}}</h3>
+                        <p class="font-semibold">₱{{.Price}} PHP / day</p>
+                        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{.Location}}</span>
+                    </div>
+                </div>
+            </a>
+            {{end}}
+        </div>
+        {{else}}
+        <h3 class="text-center block"> No Results Found.  </h3>
+        <br>
+        <br>
+        <div class="text-center">
+            <form class="suggestion" action="/suggest", method="POST">
+                <h4 class="font-bold mb-6">Do you wanna see our suggestions for: {{.Location}}</h4>
+                <input type="hidden" name="location"  value="{{.Location}}">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-md">See Suggestions</button>
+            </form>
+        </div>
+        {{end}}
+    </div>
+</main>
 </body>
 </html>

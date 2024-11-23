@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentEase - Merchant Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.1.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="drawer lg:drawer-open">
+    <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+    <div class="drawer-content flex flex-col">
+        <!-- Navbar -->
+        <div class="navbar bg-base-100 lg:hidden">
+            <div class="flex-none">
+                <label for="my-drawer-2" class="btn btn-square btn-ghost drawer-button lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </label>
+            </div>
+            <div class="flex-1">
+                <a class="btn btn-ghost normal-case text-xl">RentEase Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Page content -->
+        <div class="p-4 sm:p-8">
+            <h1 class="text-3xl font-bold mb-8">Merchant Dashboard</h1>
+
+            <!-- Stats -->
+            <div class="stats shadow w-full mb-8">
+                <div class="stat">
+                    <div class="stat-figure text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    </div>
+                    <div class="stat-title">Total Items</div>
+                    <div class="stat-value text-primary">25</div>
+                    <div class="stat-desc">21% more than last month</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-figure text-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div class="stat-title">Active Rentals</div>
+                    <div class="stat-value text-secondary">12</div>
+                    <div class="stat-desc">5 returned this week</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-figure text-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    </div>
+                    <div class="stat-title">Revenue</div>
+                    <div class="stat-value">$2,500</div>
+                    <div class="stat-desc">↗︎ 15% more than last month</div>
+                </div>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold mb-4">Recent Orders</h2>
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                        <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Item</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>#1234</td>
+                            <td>John Doe</td>
+                            <td>Power Drill</td>
+                            <td>2023-06-01</td>
+                            <td>2023-06-03</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>#1235</td>
+                            <td>Jane Smith</td>
+                            <td>DSLR Camera</td>
+                            <td>2023-05-28</td>
+                            <td>2023-06-04</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td>#1236</td>
+                            <td>Bob Johnson</td>
+                            <td>Mountain Bike</td>
+                            <td>2023-05-25</td>
+                            <td>2023-05-27</td>
+                            <td><span class="badge badge-info">Returned</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Inventory Management -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4">Inventory Management</h2>
+                <div class="overflow-x-auto">
+                    <table class="table w-full">
+                        <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Category</th>
+                            <th>Total Quantity</th>
+                            <th>Available</th>
+                            <th>Price per Day</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Power Drill</td>
+                            <td>Tools</td>
+                            <td>5</td>
+                            <td>3</td>
+                            <td>$10</td>
+                            <td>
+                                <button class="btn btn-xs btn-primary">Edit</button>
+                                <button class="btn btn-xs btn-ghost">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DSLR Camera</td>
+                            <td>Electronics</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>$30</td>
+                            <td>
+                                <button class="btn btn-xs btn-primary">Edit</button>
+                                <button class="btn btn-xs btn-ghost">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mountain Bike</td>
+                            <td>Sports</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>$20</td>
+                            <td>
+                                <button class="btn btn-xs btn-primary">Edit</button>
+                                <button class="btn btn-xs btn-ghost">Delete</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-4">
+                    <button class="btn btn-primary">Add New Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="drawer-side">
+        <label for="my-drawer-2" class="drawer-overlay"></label>
+        <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
+            <li class="mb-2 font-bold text-xl">RentEase</li>
+            <li><a class="active">Dashboard</a></li>
+            <li><a>Orders</a></li>
+            <li><a>Inventory</a></li>
+            <li><a>Customers</a></li>
+            <li><a>Analytics</a></li>
+            <li><a>Settings</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+

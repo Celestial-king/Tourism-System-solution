@@ -3,82 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketplace Dashboard</title>
+    <title></title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex min-h-screen flex-col">
-    <header class="border-b">
-        <div class="container mx-auto flex h-14 items-center gap-4">
-            <a class="font-semibold" href="#">Dashboard</a>
-            <nav class="flex items-center gap-4 text-sm">
-                <a class="text-gray-500 cursor-pointer" onclick="scrollToTrending()" href="index.html" >Trending</a>
-                <a class="text-gray-500" href="#">Hot deals</a>
-                <a class="text-gray-500" href="index.html">Recommended</a>
-            </nav>
-            <div class="ml-auto flex items-center gap-4">
-                <input class="w-[200px] border rounded-md px-3 py-1" placeholder="What are you looking for?" type="search">
-                <a href="Log-In.html" class="px-4 py-2 border rounded-md text-center">Login</a>
-                <a href="Create an Account.html" class="px-4 py-2 bg-blue-600 text-white rounded-md text-center">Sign up</a>
-            </div>
-            
+<header class="border-b">
+    <div class="container mx-auto flex h-14 items-center gap-4">
+        <a class="font-semibold" href="#">Dashboard</a>
+        <nav class="flex items-center gap-4 text-sm">
+            <a class="text-gray-500 cursor-pointer" onclick="scrollToTrending()" href="/" >Trending</a>
+            <a class="text-gray-500" href="/">Hot deals</a>
+            <a class="text-gray-500" href="/">Recommended</a>
+            {{ if not (eq .User.FirstName "" )}}
+                <span class="text-green-500">Current Balance: PHP {{ printf "%.2f" .User.Balance}}</span>
+            {{end}}
+        </nav>
+        <div class="ml-auto flex items-center gap-4">
+            {{ if (eq .User.FirstName "" )}}
+                <a href="/login" class="px-4 py-2 border rounded-md text-center">Login</a>
+                <a href="account.html" class="px-4 py-2 bg-blue-600 text-white rounded-md text-center">Sign up</a>
+            {{else}}
+            <h3> <span class="text-gray-500 cursor-pointer text-sm"> Hello, {{ .User.FirstName }}.</span>  <a href="/logout" class="px-4 py-2 bg-blue-600 border text-white rounded-md text-center">Logout </a> </h3>
+            {{ end }}
         </div>
-    </header>
-    <section class="relative h-[300px] bg-cover bg-center" style="background-image: url('images/00.jpeg');">
-        <div class="container mx-auto relative z-10 flex h-full flex-col items-center justify-center">
-            <div class="w-full max-w-3xl rounded-lg bg-white p-6 shadow-lg">
-                <h1 class="mb-4 text-2xl font-bold">What are you looking for today?</h1>
+    </div>
+</header>
+<section class="relative h-[300px] bg-cover bg-center" style="background-image: url('/images/00.jpeg');">
+    <div class="container mx-auto relative z-10 flex h-full flex-col items-center justify-center">
+        <div class="w-full max-w-3xl rounded-lg bg-white p-6 shadow-lg"> <h1 class="mb-4 text-2xl font-bold">What are you looking for today?</h1>
+            <form action="/search" method="GET">
                 <div class="flex gap-4">
-                    <input class="flex-1 border rounded-md px-3 py-2" placeholder="e.g. Manila, Philippines">
+                    <input name="location" class="flex-1 border rounded-md px-3 py-2" placeholder="e.g. Manila, Philippines">
                     <input class="border rounded-md px-3 py-2" placeholder="From" type="date">
                     <input class="border rounded-md px-3 py-2" placeholder="To" type="date">
                     <button class="px-4 py-2 bg-blue-600 text-white rounded-md">Search</button>
                 </div>
-            </div>
+            </form>
         </div>
-    </section>
-    <main class="flex-1 py-8">
-        <div class="container mx-auto">
-            <h2 class="text-2xl font-bold mb-6">Trending</h2>
-            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                <a href="product_details.html" class="block">
-                    <div class="rounded-lg overflow-hidden shadow-md">
-                        <img alt="Modern Filipiniana Dress Duchess - BR702" class="aspect-[4/3] w-full object-cover" src="images/01.png">
-                        <div class="p-4">
-                            <h3 class="font-medium mb-2">Modern Filipiniana Dress Duchess - BR702</h3>
-                            <p class="font-semibold">₱10,500 PHP / day</p>
-                        </div>
+    </div>
+</section>
+<main class="flex-1 py-8">
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-6">Trending</h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {{range .Items}}
+            <a href="/activities/{{.ID}}" class="block">
+                <div class="rounded-lg overflow-hidden shadow-md">
+                    <img alt="Beach umbrellas for a relaxing vibe in La Union" class="aspect-[4/3] w-full object-cover" src="{{.ImageUrl}}">
+                    <div class="p-4">
+                        <h3 class="font-medium mb-2">{{.Title}}</h3>
+                        <p class="font-semibold">₱{{.Price}} PHP / day</p>
+                        <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{{.Location}}</span>
                     </div>
-                </a>
-                <a href="link-to-intramuros-tour" class="block">
-                    <div class="rounded-lg overflow-hidden shadow-md">
-                        <img alt="Explore Intramuros, Manila while riding a traditional Philippine Kalesa" class="aspect-[4/3] w-full object-cover" src="images/02.png">
-                        <div class="p-4">
-                            <h3 class="font-medium mb-2">Explore Intramuros, Manila while riding a traditional Philippine Kalesa</h3>
-                            <p class="font-semibold">₱1,200 PHP / day</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="link-to-beach-umbrellas-la-union" class="block">
-                    <div class="rounded-lg overflow-hidden shadow-md">
-                        <img alt="Beach umbrellas for a relaxing vibe in La Union" class="aspect-[4/3] w-full object-cover" src="images/03.jpeg">
-                        <div class="p-4">
-                            <h3 class="font-medium mb-2">Beach umbrellas for a relaxing vibe in La Union</h3>
-                            <p class="font-semibold">₱400 PHP / day</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="link-to-motorbike-rental-mindoro" class="block">
-                    <div class="rounded-lg overflow-hidden shadow-md">
-                        <img alt="Ride Mindoro Island by renting a simple motorbike" class="aspect-[4/3] w-full object-cover" src="images/04.jpeg">
-                        <div class="p-4">
-                            <h3 class="font-medium mb-2">Ride Mindoro Island by renting a simple motorbike</h3>
-                            <p class="font-semibold">₱5,500 PHP / day</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                </div>
+            </a>
+            {{end}}
         </div>
-    </main>
-    
+    </div>
+</main>
 </body>
 </html>
